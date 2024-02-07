@@ -1,0 +1,1 @@
+<h1>Maka hasilnya<?php echo ' Adalah = '.$hasiljumlah ?></h1>
