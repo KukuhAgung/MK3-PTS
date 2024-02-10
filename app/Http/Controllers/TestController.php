@@ -15,4 +15,8 @@ class TestController extends Controller
 
         return view('dashboard', ['name' => $name, 'address' => $address]);
     }
+
+    public function index(){
+        return view ('layouts.admin');
+    }
 }
