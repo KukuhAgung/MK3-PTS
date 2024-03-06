@@ -8,7 +8,7 @@
           <div class="row justify-content-center no-gutters">
             <div class="col-md-10 d-flex align-items-center">
               <div class="services-wrap rounded-right w-100">
-                <h3 class="heading-section text-center mb-4">Better Way to Rent Your Perfect Cars</h3>
+                <h3 class="heading-section text-center mb-4">Why we should read a book</h3>
                 <div class="row d-flex mb-4">
                   <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                     <div class="services w-100 text-center">

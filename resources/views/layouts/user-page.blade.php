@@ -39,15 +39,14 @@
       <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
         <div class="col-lg-8 ftco-animate">
           <div class="text w-100 text-center mb-md-5 pb-md-5">
-            <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
-            <p style="font-size: 18px;">A small river named Duden flows by their place and supplies it with the
-              necessary regelialia. It is a paradisematic country, in which roasted parts</p>
+            <h1 class="mb-4">Explore the Amazing World of Books on Our Website!</h1>
+            <p style="font-size: 18px;">Discover a world of books online! From thrilling adventures to educational resources, find everything you need right here. Start exploring now!</p>
               <a href="https://www.youtube.com/embed/pRTWFqhEDeo?autoplay=1" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
                 <div class="icon d-flex align-items-center justify-content-center">
                   <span class="ion-ios-play"></span>
                 </div>
                 <div class="heading-title ml-5">
-                  <span>Easy steps for renting a car</span>
+                  <span>Easy steps to explore world</span>
                 </div>
               </a>              
           </div>
@@ -57,60 +56,6 @@
   </div>
 
   @yield('content')
-  
-  <section class="ftco-section testimony-section bg-light">
-    <div class="container">
-      <div class="row justify-content-center mb-5">
-        <div class="col-md-7 text-center heading-section ftco-animate">
-          <span class="subheading">Testimonial</span>
-          <h2 class="mb-3">Happy Clients</h2>
-        </div>
-      </div>
-      <div class="row ftco-animate">
-        <div class="col-md-12">
-          <div class="carousel-testimony owl-carousel ftco-owl">
-            <div class="item">
-              <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_1.jpg') }})">
-                </div>
-                <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">Marketing Manager</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_2.jpg') }})">
-                </div>
-                <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">Interface Designer</span>
-                </div>
-              </div>
-            </div>
-            <div class="item">
-              <div class="testimony-wrap rounded text-center py-4 pb-5">
-                <div class="user-img mb-2" style="background-image: url({{ asset('frontend/images/person_3.jpg') }})">
-                </div>
-                <div class="text pt-4">
-                  <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                    Consonantia, there live the blind texts.</p>
-                  <p class="name">Roger Scott</p>
-                  <span class="position">UI Designer</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   @include('partials.footer')
 
 

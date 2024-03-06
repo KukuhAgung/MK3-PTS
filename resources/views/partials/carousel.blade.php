@@ -26,7 +26,7 @@
                         <p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Buy</a> <a href="{{ route('buku.detail', $buku->id) }}" class="btn btn-secondary py-2 ml-1">Details</a></p>
                     </div>
                 </div>
-        @endforeach
+            @endforeach
         
             
           </div>
