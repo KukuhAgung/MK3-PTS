@@ -111,7 +111,7 @@ class TransaksiController extends Controller
         $transaksi->delete();
 
         return redirect()->back()->with([
-            'message' => 'Data berhasil dihapus',
+            'message' => 'Transaksi berhasil dihapus',
             'alert-type' => 'danger'
         ]);
     }

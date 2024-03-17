@@ -32,7 +32,7 @@ class BukuController extends Controller
             buku::create($request->except('cover') + ['cover' => $cover, 'slug' => $slug]);
         }
 
-        return redirect()->route('dashboard.index')->with([
+        return redirect()->route('dashboard.show')->with([
             'message' => 'data sukses dibuat',
             'alert-type' => 'success'
         ]);
@@ -50,7 +50,7 @@ class BukuController extends Controller
             $slug = Str::slug($request->judul_buku, '-');
             $buku->update($request->validated() + ['slug' => $slug]);
         }
-        return redirect()->route('buku.index')->with([
+        return redirect()->route('dashboard.show')->with([
             'message' => 'Data berhasil diubah',
             'alert-type' => 'success',
         ]);

@@ -35,7 +35,7 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware('auth')->group(function () {
     Route::resource('dashboard', BukuController::class);
     Route::get('/dashboard/buku/', [BukuController::class, 'show'])->name('dashboard.show');
-    Route::put('dashboard/admin/buku/update-image/{id}', [BukuController::class, 'updateImage'])->name('buku.updateImage');
+    Route::put('dashboard/admin/buku/update-image/{id}', [BukuController::class, 'updateImage'])->name('dashboard.updateImage');
 });
 
 require __DIR__ . '/auth.php';
