@@ -27,7 +27,7 @@ class BookStoreRequest extends FormRequest
             'genre' => 'required',
             'cover' => 'image|file|max:1024',
             'penulis' => 'required',
-            'sinopsis' => 'required|max:255',
+            'sinopsis' => 'required|max:1000',
         ];
     }
 }

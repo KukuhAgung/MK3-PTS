@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransaksiController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +18,24 @@ use App\Http\Controllers\BukuController;
 |
 */
 
-Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('userpage');
+Route::get('/', [UserController::class, 'index'])->name('userpage');
+Route::get('login', function () {
+    return view('auth.login');
+});
 
+Route::get('/buku/{id}', [UserController::class, 'detail'])->name('buku.detail');
+Route::get('/buku/{id}/pembayaran', [UserController::class, 'buy'])->name('user.payment');
 
-Route::get('admin/buku/{id}', [BukuController::class, 'detail'])->name('buku.detail');
-Route::get('admin/create', [BukuController::class, 'create'])->name('buku.create');
-Route::get('admin/dashboard', [AdminController::class, 'index'])->name('adminpage');
-Route::resource('admin/buku', BukuController::class);
+Route::middleware(['auth'])->group(function () {
+    Route::resource('transaksi', TransaksiController::class);
+    Route::put('dashboard/buku/set-status/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
+    Route::get('/dashboard/kasir/', [BukuController::class, 'kasir'])->name('dashboard.kasir');
+});
 
-Route::put('admin/buku/update-image/{id}', [BukuController::class, 'updateImage'])->name('buku.updateImage');
+Route::middleware('auth')->group(function () {
+    Route::resource('dashboard', BukuController::class);
+    Route::get('/dashboard/buku/', [BukuController::class, 'show'])->name('dashboard.show');
+    Route::put('dashboard/admin/buku/update-image/{id}', [BukuController::class, 'updateImage'])->name('buku.updateImage');
+});
+
+require __DIR__ . '/auth.php';

@@ -63,7 +63,7 @@
 				<div class="col-md-9">
 				  <div class="px-4 rounded">
 					@include('partials.caption')
-					<p class="mb-0 d-block"><a href="#" class="btn btn-primary px-5 py-2 mr-1">Buy</a></p>
+					<p class="mb-0 d-block"><a href='{{ route('user.payment', $buku->id) }}' class="btn btn-primary px-5 py-2 mr-1">Buy</a></p>
 				  </div>
 				</div>
 			  </div>

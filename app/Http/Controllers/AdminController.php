@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $bukus = buku::orderBy('id')->get();
-        return view('admin.buku.index')->with(compact('bukus'));
+        $bukus = buku::orderBy('terjual')->get();
+        return view('layouts.admin-penjualan')->with(compact('bukus'));
     }
 }

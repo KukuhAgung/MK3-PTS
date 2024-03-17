@@ -1,14 +1,24 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\buku;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $bukus = buku::all();
-        return view('homepage')->with(compact('bukus'));
+        $buku = buku::all();
+        return view('homepage')->with(compact('buku'));
+    }
+    public function detail($id)
+    {
+        $buku = buku::findOrFail($id);
+        return view('layouts.detail-buku')->with(compact('buku'));
+    }
+    public function buy($id)
+    {
+        $buku = buku::findOrFail($id);
+        return view('layouts.payment')->with(compact('buku'));
     }
 }

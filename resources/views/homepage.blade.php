@@ -48,8 +48,6 @@
         </div>
       </div>
   </section>
-
-
  @include('partials.carousel')
  @include('partials.display-buku')
   

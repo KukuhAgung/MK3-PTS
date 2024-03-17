@@ -1,4 +1,4 @@
-@extends('layouts.admin-page')
+@extends('layouts.admin')
 @section('content')
     <div class="row">
         <div class="col-lg-8">
@@ -22,7 +22,7 @@
                         Form Edit Buku
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('buku.update', $buku->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dashboard.update', $buku->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group">
@@ -63,7 +63,7 @@
                         Cover Buku
                     </div>
                     <div class="card-body">
-                        <form action="{{ route('buku.updateImage', $buku->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('dashboard.updateImage', $buku->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('put')
                             <div class="form-group">
