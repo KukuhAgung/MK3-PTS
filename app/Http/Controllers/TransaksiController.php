@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Transaksi\StoreTransaksiRequest;
 use App\Http\Requests\Transaksi\UpdateTransaksiRequest;
+use App\Models\Pembeli;
 use App\Models\Transaksi;
 use App\Models\buku;
 
@@ -29,7 +30,7 @@ class TransaksiController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTransaksiRequest $request, buku $buku)
+    public function store(StoreTransaksiRequest $request)
     {
         if ($request->input('pembeli') == null) {
             return redirect()->back()->with([
@@ -43,9 +44,18 @@ class TransaksiController extends Controller
         $transaksi->items = $request->input('items');
         $transaksi->alamat = $request->input('alamat');
         $transaksi->total = $request->input('total');
+        $transaksi->pembayaran = $request->input('pembayaran');
         $transaksi->save();
 
-        $transaksi->save();
+
+        $customers = new Pembeli();
+        $customers->nama_pembeli = $transaksi->pembeli;
+        $customers->alamat = $transaksi->alamat;
+        $customers->pengeluaran = $transaksi->total;
+        $customers->save();
+
+
+        $transaksi->increment('id_transaksi');
 
         return redirect()->back()->with([
             'message' => 'Transaksi berhasil ditambahkan',
@@ -76,28 +86,30 @@ class TransaksiController extends Controller
     public function update(UpdateTransaksiRequest $request, $id)
     {
         $transaksi = Transaksi::findOrFail($id);
-    
+
         if ($request->validated()) {
             $transaksi->pembeli = $request->input('pembeli');
             $transaksi->items = $request->input('items');
             $transaksi->alamat = $request->input('alamat');
             $transaksi->total = $request->input('total');
-    
+
             if ($request->input('status') === 'Success') {
                 $transaksi->status = 'Success';
-                $buku = buku::where('judul_buku', $transaksi->items)->first();
-                $buku->increment('terjual');
+                if ($transaksi->status == 'Success') {
+                    $buku = buku::where('judul_buku', $transaksi->items)->first();
+                    $buku->increment('terjual');
+                }
             }
-    
+
             $transaksi->save();
         }
-    
+
         return redirect()->back()->with([
             'message' => 'Status transaksi berhasil diubah',
             'alert-type' => 'success',
         ]);
     }
-    
+
 
 
 

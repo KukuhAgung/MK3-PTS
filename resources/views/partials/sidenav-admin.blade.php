@@ -38,6 +38,7 @@
                 <h6 class="collapse-header">Custom Data:</h6>
                 <a class="collapse-item" href='{{ route('dashboard.show') }}'>Buku</a>
                 <a class="collapse-item" href="{{ route('dashboard.kasir') }}">Transaksi</a>
+                <a class="collapse-item" href="{{ route('customers.index') }}">Customer</a>
             </div>
         </div>
     </li>

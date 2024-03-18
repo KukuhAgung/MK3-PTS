@@ -9,5 +9,10 @@ class Transaksi extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'status'];
+    protected $guarded = ['id', 'status', 'id_transaksi'];
+
+    public function customers()
+    {
+        return $this->belongsTo(Pembeli::class, 'id_pembeli', 'id');
+    }
 }

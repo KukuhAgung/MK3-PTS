@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BukuController;
+use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Models\Pembeli;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,6 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('transaksi', TransaksiController::class);
     Route::put('dashboard/buku/set-status/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
     Route::get('/dashboard/kasir/', [BukuController::class, 'kasir'])->name('dashboard.kasir');
+});
+Route::middleware(['auth'])->group(function () {
+    Route::resource('customers', PembeliController::class);
+    Route::get('/dashboard/customer/', [PembeliController::class, 'customer'])->name('customers.customer');
 });
 
 Route::middleware('auth')->group(function () {
