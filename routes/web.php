@@ -25,22 +25,19 @@ Route::get('login', function () {
     return view('auth.login');
 });
 
-Route::get('/buku/{id}', [UserController::class, 'detail'])->name('buku.detail');
-Route::get('/buku/{id}/pembayaran', [UserController::class, 'buy'])->name('user.payment');
-
-Route::middleware(['auth'])->group(function () {
-    Route::resource('transaksi', TransaksiController::class);
-    Route::put('dashboard/buku/set-status/{id}', [TransaksiController::class, 'update'])->name('transaksi.update');
-    Route::get('/dashboard/kasir/', [BukuController::class, 'kasir'])->name('dashboard.kasir');
+Route::middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('homepage');
+    Route::get('/buku/{id}', [UserController::class, 'detail'])->name('buku.detail');
+    Route::get('/buku/{id}/pembayaran', [UserController::class, 'buy'])->name('user.payment');
 });
-Route::middleware(['auth'])->group(function () {
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::resource('transaksi', TransaksiController::class);
+    Route::get('/dashboard/kasir/', [BukuController::class, 'kasir'])->name('dashboard.kasir');
     Route::resource('customers', PembeliController::class);
     Route::get('/dashboard/customer/', [PembeliController::class, 'customer'])->name('customers.customer');
-});
-
-Route::middleware('auth')->group(function () {
     Route::resource('dashboard', BukuController::class);
-    Route::get('/dashboard/buku/', [BukuController::class, 'show'])->name('dashboard.show');
+    Route::get('/dashboard/buku/', [BukuController::class, 'show'])->name('dashboard.buku');
     Route::put('dashboard/admin/buku/update-image/{id}', [BukuController::class, 'updateImage'])->name('dashboard.updateImage');
 });
 

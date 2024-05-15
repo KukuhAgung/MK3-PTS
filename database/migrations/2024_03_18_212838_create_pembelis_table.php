@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->string('nama_pembeli');
             $table->string('alamat');
             $table->integer('pengeluaran');
+            $table->foreignId('id_transaksi')->default(0);
             $table->timestamps();
         });
     }
